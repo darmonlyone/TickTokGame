@@ -1,16 +1,18 @@
-package model.sub;
+package model.design_patterns.singleton;
 
 public class StopWatch {
 
 
+    private static StopWatch stopWatch;
     private long startTime;
     private long stopTime;
     private boolean isStart;
 
-    public StopWatch(){
-        startTime = 0;
-        stopTime = 0;
-        isStart = false;
+    public static StopWatch getInstance(){
+        if (stopWatch == null) {
+            stopWatch = new StopWatch();
+        }
+        return stopWatch;
     }
 
     public void startTiming(){
@@ -33,6 +35,8 @@ public class StopWatch {
     }
 
     public double getUsedTime() {
+        if (startTime == 0|| stopTime == 0)
+            return 0.00;
         return (stopTime - startTime)*0.001;
     }
 }

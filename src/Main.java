@@ -8,9 +8,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("TickTakGame.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("view/TickTakGame.fxml"));
+        primaryStage.setTitle("Tick Tok Game");
         primaryStage.show();
     }
 

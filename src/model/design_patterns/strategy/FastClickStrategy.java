@@ -2,7 +2,7 @@ package model.design_patterns.strategy;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import model.sub.StopWatch;
+import model.design_patterns.singleton.StopWatch;
 import model.sub.Timer;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class FastClickStrategy implements TickTokGameStrategy {
         this.score = score;
         playTimes = new ArrayList<>();
         isClickAble = false;
-        stopWatch = new StopWatch();
+        stopWatch = StopWatch.getInstance();
     }
 
     @Override
@@ -68,6 +68,6 @@ public class FastClickStrategy implements TickTokGameStrategy {
 
     @Override
     public void reset() {
-        isClickAble = false;
+
     }
 }

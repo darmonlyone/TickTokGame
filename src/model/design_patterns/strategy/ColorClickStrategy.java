@@ -1,6 +1,9 @@
 package model.design_patterns.strategy;
 
-public class ChoiceClickStrategy implements TickTokGameStrategy {
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
+public class ColorClickStrategy implements TickTokGameStrategy {
 
 
     @Override
@@ -19,12 +22,12 @@ public class ChoiceClickStrategy implements TickTokGameStrategy {
     }
 
     @Override
-    public void run() {
+    public void run(EventHandler<ActionEvent> eventEventHandler) {
 
     }
 
     @Override
-    public void click() {
+    public void click(EventHandler<ActionEvent> eventEventHandler) {
 
     }
 
