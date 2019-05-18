@@ -1,6 +1,6 @@
 package model.design_patterns.iterator;
 
-public class NormalScoreCounter extends ScoreCounter {
+public class NormalTimeCounter extends TimeCounter {
 
     int index;
 
@@ -10,7 +10,7 @@ public class NormalScoreCounter extends ScoreCounter {
     }
 
     @Override
-    public Integer next() {
+    public Double next() {
         return scoreArrays[index++];
     }
 }

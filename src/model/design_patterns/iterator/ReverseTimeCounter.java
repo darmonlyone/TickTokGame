@@ -1,6 +1,6 @@
 package model.design_patterns.iterator;
 
-public class ReverseScoreCounter extends ScoreCounter{
+public class ReverseTimeCounter extends TimeCounter {
 
     private  int index;
 
@@ -10,7 +10,7 @@ public class ReverseScoreCounter extends ScoreCounter{
     }
 
     @Override
-    public Integer next() {
+    public Double next() {
         return scoreArrays[scoreArrays.length - (index++) - 1];
     }
 

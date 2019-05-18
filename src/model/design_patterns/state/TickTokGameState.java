@@ -1,7 +1,7 @@
 package model.design_patterns.state;
 
 
-interface GameState {
+public interface TickTokGameState {
 
     void ready();
     void giveup();
