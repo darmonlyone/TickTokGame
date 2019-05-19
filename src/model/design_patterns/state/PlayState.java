@@ -1,6 +1,12 @@
 package model.design_patterns.state;
 
+import model.FastClickGame;
+
 public class PlayState extends TickTokGameState {
+
+    PlayState(FastClickGame fastClickGame) {
+        super(fastClickGame);
+    }
 
     @Override
     public void play() {
@@ -15,6 +21,6 @@ public class PlayState extends TickTokGameState {
         fastClickGame.clickAble(false);
         fastClickGame.stopTiming();
         fastClickGame.addPlayTime();
-        fastClickGame.setTickTokGameState(new ResultState());
+        fastClickGame.setTickTokGameState(new ResultState(fastClickGame));
     }
 }

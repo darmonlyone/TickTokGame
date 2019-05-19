@@ -6,12 +6,12 @@ public class ReverseTimeCounter extends TimeCounter {
 
     @Override
     public boolean hasNext() {
-        return index < scoreArrays.length;
+        return index < timeArrays.length;
     }
 
     @Override
     public Double next() {
-        return scoreArrays[scoreArrays.length - (index++) - 1];
+        return timeArrays[timeArrays.length - (index++) - 1];
     }
 
 }

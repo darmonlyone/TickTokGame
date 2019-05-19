@@ -25,10 +25,10 @@ public class Timer {
         timeline.play();
     }
 
-    public int countDown(){
+    public void countDown(){
         if (timeLeft == 0)
             stopTimer();
-        return timeLeft--;
+        timeLeft--;
     }
     public void stopTimer(){
         timeline.stop();

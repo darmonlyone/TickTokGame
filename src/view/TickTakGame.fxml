@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,9 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TickTokGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TickTokGameController">
    <children>
-      <Pane fx:id="main" prefHeight="400.0" prefWidth="601.0">
+      <Pane fx:id="main" prefHeight="400.0" prefWidth="601.0" visible="false">
          <children>
             <GridPane layoutX="1.0" layoutY="143.0" prefHeight="230.0" prefWidth="600.0">
               <columnConstraints>
@@ -28,7 +30,10 @@
                      <children>
                         <FlowPane alignment="CENTER" prefHeight="195.0" prefWidth="180.0" vgap="20.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assert/image/lightOnOff.gif" />
+                                 </image></ImageView>
                               <Button mnemonicParsing="false" onAction="#playFastClick" text="Play Fast Click" />
                            </children>
                            <FlowPane.margin>
@@ -50,12 +55,53 @@
             </FlowPane>
          </children>
       </Pane>
-      <Pane fx:id="gameclick" prefHeight="400.0" prefWidth="600.0" visible="false">
+      <Pane fx:id="gameclick" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="225.0" layoutY="285.0" mnemonicParsing="false" onAction="#gameclickAction" prefHeight="56.0" prefWidth="150.0" text="Click" />
+            <ImageView fx:id="light" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assert/image/lightOff.jpg" />
+               </image></ImageView>
+            <Button fx:id="butClick" layoutX="225.0" layoutY="285.0" mnemonicParsing="false" onAction="#gameclickAction" prefHeight="56.0" prefWidth="150.0" text="Click" />
+            <Label layoutX="231.0" layoutY="57.0" text="If light &quot;On&quot; just click" />
          </children>
       </Pane>
-      <Pane fx:id="result" layoutX="1.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0" visible="false" />
+      <Pane fx:id="result" layoutX="1.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <children>
+            <Label fx:id="resultLabel" alignment="CENTER_RIGHT" layoutX="83.0" layoutY="59.0" prefHeight="56.0" prefWidth="222.0" text="1.000">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="339.0" layoutY="59.0" prefHeight="56.0" prefWidth="139.0" text="Second">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Button layoutX="83.0" layoutY="202.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="56.0" prefWidth="126.0" text="Main Menu" />
+            <Button layoutX="83.0" layoutY="293.0" mnemonicParsing="false" onAction="#tryagain" prefHeight="56.0" prefWidth="126.0" text="Try Again" />
+            <ScrollPane layoutX="273.0" layoutY="175.0" prefHeight="200.0" prefWidth="271.0">
+               <content>
+                  <FlowPane fx:id="historyPane" prefHeight="200.0" prefWidth="251.0">
+                     <children>
+                        <Pane prefHeight="44.0" prefWidth="252.0" style="-fx-background-color: lightGrey;">
+                           <children>
+                              <Label layoutX="24.0" layoutY="13.0" prefHeight="20.0" prefWidth="120.0" text="0.000">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="151.0" layoutY="13.0" text="Second">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+            <Label layoutX="273.0" layoutY="154.0" text="History" />
+         </children></Pane>
    </children>
 </AnchorPane>

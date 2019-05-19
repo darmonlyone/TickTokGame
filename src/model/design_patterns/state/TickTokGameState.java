@@ -6,6 +6,8 @@ public abstract class TickTokGameState {
 
     protected FastClickGame fastClickGame;
 
+    TickTokGameState(FastClickGame fastClickGame){this.fastClickGame = fastClickGame;}
+
     public void start(){}
 
     public void ready(){}

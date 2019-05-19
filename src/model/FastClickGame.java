@@ -2,7 +2,6 @@ package model;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import model.design_patterns.iterator.TimeBoard;
 import model.design_patterns.iterator.TimeCounter;
 import model.design_patterns.singleton.StopWatch;
 import model.design_patterns.state.GameState;
@@ -28,22 +27,35 @@ public class FastClickGame {
         playTimes = new ArrayList<>();
         isClickAble = false;
         stopWatch = StopWatch.getInstance();
-        tickTokGameState = new GameState();
+        tickTokGameState = new GameState(this);
+    }
+
+    public boolean isClickAble() {
+        return isClickAble;
+    }
+
+    public double getPlayTime() {
+        return playTime;
     }
 
     public void setTickTokGameState(TickTokGameState tickTokGameState) {
         this.tickTokGameState = tickTokGameState;
     }
 
+    public void ready(){
+        tickTokGameState.ready();
+    }
+
     public void run(EventHandler<ActionEvent> eventEventHandler) {
         tickTokGameState.start();
-        int toClickTimes = random.nextInt(20);
+        int toClickTimes = random.nextInt(5)+3;
         Timer timer = new Timer(toClickTimes);
         timer.startTimer(event -> {
             countDown = timer.getTimeLeft();
+
             if (countDown == 0){
                 tickTokGameState.play();
-                eventEventHandler.notify();
+                eventEventHandler.handle(new ActionEvent());
             }
         });
     }
@@ -51,7 +63,7 @@ public class FastClickGame {
     public void click(EventHandler<ActionEvent> eventEventHandler) {
         if (isClickAble) {
             tickTokGameState.finish();
-            eventEventHandler.notify();
+            eventEventHandler.handle(new ActionEvent());
         }
     }
 
@@ -71,27 +83,27 @@ public class FastClickGame {
     public void clickAble(boolean bool){
         this.isClickAble = bool;
     }
-    public void ready(){
-        tickTokGameState.ready();
-    }
-
-    public void toMain(){
-        tickTokGameState.main();
-    }
-
-    public void tryagain(){
-        tickTokGameState.play();
-    }
 
     public void setTimeCounter(TimeCounter timeCounter) {
         this.timeCounter = timeCounter;
     }
 
     public TimeCounter getTimeCounter() {
-        timeCounter.setScoreArrays((Double[]) playTimes.toArray());
+        Double[] target = new Double[playTimes.size()];
+        for (int i = 0; i < target.length; i++) {
+            target[i] = playTimes.get(i);
+        }
+        timeCounter.setTimeArrays(target);
         return timeCounter;
     }
 
+    public void main(){
+        tickTokGameState.main();
+    }
+
+    public void tryAgain(){
+        tickTokGameState.play();
+    }
 
     public void lightOut() {
         lightOn = false;

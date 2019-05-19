@@ -4,9 +4,9 @@ import java.util.Iterator;
 
 public abstract class TimeCounter implements  Iterator<Double>{
 
-    Double[] scoreArrays;
+    Double[] timeArrays;
 
-    public void setScoreArrays(Double[] scoreArrays) {
-        this.scoreArrays = scoreArrays;
+    public void setTimeArrays(Double[] timeArrays) {
+        this.timeArrays = timeArrays;
     }
 }
