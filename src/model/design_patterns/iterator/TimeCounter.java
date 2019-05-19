@@ -2,11 +2,11 @@ package model.design_patterns.iterator;
 
 import java.util.Iterator;
 
-abstract class TimeCounter implements  Iterator<Double>{
+public abstract class TimeCounter implements  Iterator<Double>{
 
-    double[] scoreArrays;
+    Double[] scoreArrays;
 
-    public void setScoreArrays(double[] scoreArrays) {
+    public void setScoreArrays(Double[] scoreArrays) {
         this.scoreArrays = scoreArrays;
     }
 }

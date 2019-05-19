@@ -10,6 +10,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/TickTakGame.fxml"));
         primaryStage.setTitle("Tick Tok Game");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

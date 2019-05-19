@@ -15,9 +15,4 @@ public class TimeBoard implements Iterable<Double> {
         this.timeCounter = timeCounter;
     }
 
-    public void setScoreCounter(TimeCounter timeCounter, double[] scoreArrays) {
-        this.timeCounter = timeCounter;
-        this.timeCounter.setScoreArrays(scoreArrays);
-    }
-
 }
