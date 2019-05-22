@@ -1,6 +1,6 @@
 package model.design_patterns.state;
 
-import model.FastClickGame;
+import model.design_patterns.singleton.FastClickGame;
 
 public class ResultState extends TickTokGameState {
     ResultState(FastClickGame fastClickGame) {

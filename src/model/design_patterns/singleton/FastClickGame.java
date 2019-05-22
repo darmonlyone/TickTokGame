@@ -1,4 +1,4 @@
-package model;
+package model.design_patterns.singleton;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,11 +23,20 @@ public class FastClickGame {
     private int countDown;
     private StopWatch stopWatch;
 
-    public FastClickGame(){
+    private static FastClickGame fastClickGame;
+
+    private FastClickGame(){
         playTimes = new ArrayList<>();
         isClickAble = false;
         stopWatch = StopWatch.getInstance();
         tickTokGameState = new GameState(this);
+    }
+
+    public static FastClickGame getInstance(){
+        if (fastClickGame == null) {
+            fastClickGame = new FastClickGame();
+        }
+        return fastClickGame;
     }
 
     public boolean isClickAble() {

@@ -2,7 +2,6 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import model.FastClickGame;
+import model.design_patterns.singleton.FastClickGame;
 import model.design_patterns.iterator.NormalTimeCounter;
 import model.design_patterns.iterator.TimeBoard;
 
@@ -42,7 +41,7 @@ public class TickTokGameController {
     @FXML
     private void initialize() {
         changePage(main);
-        fastClickGame = new FastClickGame();
+        fastClickGame = FastClickGame.getInstance();
         defaltHistoryPane = (Pane) historyPane.getChildren().get(0);
     }
 
