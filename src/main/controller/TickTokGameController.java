@@ -9,9 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import model.design_patterns.singleton.FastClickGame;
-import model.design_patterns.iterator.NormalTimeCounter;
+import model.design_patterns.iterator.ReverseTimeCounter;
 import model.design_patterns.iterator.TimeBoard;
+import model.design_patterns.singleton.FastClickGame;
 
 public class TickTokGameController {
     @FXML
@@ -65,14 +65,20 @@ public class TickTokGameController {
     void playFastClick(ActionEvent event) {
         fastClickGame.ready();
         changePage(gameclick);
-        lightOff();
+        ligthOnOff();
         clickAble();
         fastClickGame.run(e->{
-            lightOn();
+            ligthOnOff();
             clickAble();
         });
     }
 
+    private void ligthOnOff(){
+        if (fastClickGame.isLightOn())
+            lightOn();
+        else
+            lightOff();
+    }
     private void clickAble(){
         if (fastClickGame.isClickAble())
             butClick.setText("Click!!");
@@ -82,7 +88,7 @@ public class TickTokGameController {
 
     private void setHistory(){
 
-        fastClickGame.setTimeCounter(new NormalTimeCounter());
+        fastClickGame.setTimeCounter(new ReverseTimeCounter());
         TimeBoard timeBoard = new TimeBoard();
         timeBoard.setTimeCounter(fastClickGame.getTimeCounter());
         historyPane.getChildren().clear();
@@ -112,11 +118,11 @@ public class TickTokGameController {
     }
 
     private void lightOff(){
-        light.setImage(new Image("assert/image/lightOff.jpg",200,200,true,true));
+        light.setImage(new Image("./assert/image/lightOff.jpg",200,200,true,true));
     }
 
     private void lightOn(){
-        light.setImage(new Image("assert/image/lightOn.jpg",200,200,true,true));
+        light.setImage(new Image("./assert/image/lightOn.jpg",200,200,true,true));
     }
 
     @FXML

@@ -1,4 +1,4 @@
-package model.sub;
+package main.model.sub;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

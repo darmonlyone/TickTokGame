@@ -2,11 +2,10 @@ package model.design_patterns.singleton;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import main.model.sub.Timer;
 import model.design_patterns.iterator.TimeCounter;
-import model.design_patterns.singleton.StopWatch;
 import model.design_patterns.state.GameState;
 import model.design_patterns.state.TickTokGameState;
-import model.sub.Timer;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -72,13 +71,26 @@ public class FastClickGame {
     public void click(EventHandler<ActionEvent> eventEventHandler) {
         if (isClickAble) {
             tickTokGameState.finish();
+            addPlayTime();
+            eventEventHandler.handle(new ActionEvent());
+        }
+    }
+
+    public void clickWithTime(EventHandler<ActionEvent> eventEventHandler,double playTime) {
+        if (isClickAble) {
+            tickTokGameState.finish();
+            this.playTime = playTime;
+            addPlayTime();
             eventEventHandler.handle(new ActionEvent());
         }
     }
 
     public void addPlayTime(){
-        playTime = stopWatch.getUsedTime();
         playTimes.add(playTime);
+    }
+
+    public void setPlayTime() {
+        playTime = stopWatch.getUsedTime();
     }
 
     public void startTiming(){
@@ -106,6 +118,19 @@ public class FastClickGame {
         return timeCounter;
     }
 
+    public ArrayList<Double> getPlayTimes() {
+        return playTimes;
+    }
+
+    public Double getFastestTime(){
+        Double doubled = playTimes.get(0);
+        for (Double d: playTimes){
+            if (d < doubled)
+                doubled = d;
+        }
+        return doubled;
+    }
+
     public void main(){
         tickTokGameState.main();
     }
@@ -118,7 +143,15 @@ public class FastClickGame {
         lightOn = false;
     }
 
+    public boolean isLightOn() {
+        return lightOn;
+    }
+
     public void lightIn(){
         lightOn = true;
+    }
+
+    public void clearPlayTimes() {
+        playTimes.clear();
     }
 }

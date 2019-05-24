@@ -20,7 +20,7 @@ public class PlayState extends TickTokGameState {
         fastClickGame.lightOut();
         fastClickGame.clickAble(false);
         fastClickGame.stopTiming();
-        fastClickGame.addPlayTime();
+        fastClickGame.setPlayTime();
         fastClickGame.setTickTokGameState(new ResultState(fastClickGame));
     }
 }
