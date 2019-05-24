@@ -1,3 +1,5 @@
-# Tick Tok Game
+# Tick Tok Game (Fast Click game)
 
-\#Game of the year
+This game is easy. You just need to click the button when the light is
+on. Its will calculate how fast you click.
+
